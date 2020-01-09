@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+use App\Processor;
+use App\Service\Input;
+use App\Service\Logger;
+
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+$conf = require 'config/main.php';
+
+$input = new Input($argv);
+$logger = new Logger;
+
+try {
+    $processor = new Processor($input->getUrl(), $conf['parser'], $conf['saver'], $logger);
+    $processor->run();
+} catch (Exception $exception) {
+    echo $exception->getMessage();
+}
+
