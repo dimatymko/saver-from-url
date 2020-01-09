@@ -1,6 +1,6 @@
 #Test task
 
-The console command witch imports data to database from a csv file. 
+The script saves data from url. 
 ```
 bin/console <url>
 ```
